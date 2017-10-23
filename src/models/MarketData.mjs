@@ -12,7 +12,7 @@ export default class MarketData {
     this.fullOrders = []
     this.buy = {}
     this.sell = {}
-    this.minMargin = 0.035
+    this.minMargin = 0.042
   }
 
   get status() {
@@ -38,7 +38,6 @@ export default class MarketData {
       this.expires = moment().add(300, 'seconds')
       this.getMarketData()
         .then(() => {
-          console.log('start processing')
           this.processMarketData()
         })
         .catch(err => console.log(err))
@@ -93,7 +92,7 @@ export default class MarketData {
             return true
           }
         }
-      }).sort((a, b) => b.price - a.price)
+      })
 
       filteredSells.forEach(order => {
         const sellLoc = (sellLocations[order.loc]) ? [...sellLocations[order.loc]] : []
