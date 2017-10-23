@@ -8,7 +8,7 @@ export default class Order {
     this.type = rawOrder.type_id
     this.price = rawOrder.price
     this.amt = rawOrder.volume_remain
-    this.loc = rawOrder.location
+    this.loc = rawOrder.location_id
     this.ends = moment(rawOrder.issued)
       .add(rawOrder.duration, 'days')
       .utc()
@@ -26,7 +26,7 @@ export default class Order {
       }
     }
 
-    if(this.isLowSec(rawOrder.location)) {
+    if(this.isLowSec(rawOrder.location_id)) {
       this.lowSec = true
     }
   }

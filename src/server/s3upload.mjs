@@ -2,7 +2,7 @@ import AWS from 'aws-sdk'
 
 const s3Upload = orders => {
   const s3 = new AWS.S3()
-  const bucket = process.env.S3_BUCKET || 'redart.space'
+  const bucket = process.env.S3_BUCKET
 
   const s3Params = {
     Bucket: bucket,

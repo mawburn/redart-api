@@ -1,11 +1,9 @@
 import express from 'express'
 import MarketData from './models/MarketData'
-import UpdateOrders from './server/UpdateOrders'
 
 const app = express()
 app.disable('etag')
 
-const updateOrders = new UpdateOrders()
 const marketData = new MarketData()
 
 const port = process.env.PORT || 8000
@@ -18,8 +16,6 @@ app.get('/status', (req, res) => {
 
 app.get('/update/:id', (req, res) => {
   if(req.params.id === updateKey) {
-    // updateOrders.updater()
-    // res.send(updateOrders.status)
     marketData.update()
     res.type('json')
     res.send(marketData.status)
